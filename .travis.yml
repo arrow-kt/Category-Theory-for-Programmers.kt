@@ -1,8 +1,9 @@
-language: java
-install: true
+language: kotlin
+sudo: required
+dist: trusty
 
 jdk:
   - oraclejdk8
 
 script:
-  - ./gradlew clean runAnk
+  - ./gradlew runAnk
