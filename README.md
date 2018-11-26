@@ -4,7 +4,7 @@
 
 ## Contributing
 Contributions (PR, review, issues) are welcome!
-If you are interested, please indicate that you are working on in the respective issues. [You can find the issues for each chapter here here.](https://github.com/arrow-kt/Category-Theory-for-Programmers.kt/issues).
+If you are interested, please indicate that you are working on in the respective issues. [You can find the issues for each chapter here here.](https://github.com/arrow-kt/Category-Theory-for-Programmers.kt/issues). Feel free to claim an issue you want to work on by adding a comment. Someone will then move it to `In progress` in the [project board](https://github.com/arrow-kt/Category-Theory-for-Programmers.kt/projects/1)
 
 We discuss Arrow and development of FP in general in Kotlin in the
 [Kotlin Community Slack](https://slack.kotlinlang.org) in the [arrow](https://kotlinlang.slack.com/messages/C5UPMM0A0) and [arrow-contributors](https://kotlinlang.slack.com/messages/C8UK6RTHU) channels. 
