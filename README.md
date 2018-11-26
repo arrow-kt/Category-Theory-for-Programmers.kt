@@ -15,6 +15,10 @@ Build the project with:
 ./gradlew runAnk
 ```
 
+## Spaces and indentation
+
+Please use 2 spaces to indent your code.
+
 ## Type-check your code
 
 Use **\`\`\`kotlin:ank:silent\`\`\`** for code that is compilable, use **\`\`\`kotlin\`\`\`** otherwise.
