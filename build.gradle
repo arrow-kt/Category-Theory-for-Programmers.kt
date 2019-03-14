@@ -4,9 +4,9 @@ buildscript {
     repositories {
         mavenCentral()
         jcenter()
-        maven { url "http://dl.bintray.com/kotlin/kotlin-dev" }
-        maven { url "https://dl.bintray.com/jetbrains/markdown/" }
-        maven { url "https://dl.bintray.com/arrow-kt/arrow-kt/" }
+        maven { url = uri("http://dl.bintray.com/kotlin/kotlin-dev")}
+        maven { url = uri("https://dl.bintray.com/jetbrains/markdown/")}
+        maven { url = uri("https://dl.bintray.com/arrow-kt/arrow-kt/")}
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -27,11 +27,11 @@ ank {
 defaultTasks 'runAnk'
 
 repositories {
-    maven { url 'https://jitpack.io' }
+    maven { url = uri("https://jitpack.io") }
     mavenCentral()
     jcenter()
-    maven { url 'https://oss.jfrog.org/artifactory/oss-snapshot-local/' }
-    maven { url "https://dl.bintray.com/jetbrains/markdown/" }
+    maven { url = uri("https://oss.jfrog.org/artifactory/oss-snapshot-local/") }
+    maven { url = uri("https://dl.bintray.com/jetbrains/markdown/") }
 }
 
 dependencies {
@@ -57,10 +57,10 @@ dependencies {
     compile("io.arrow-kt:arrow-recursion:$arrow_version") //optional
     compile("io.arrow-kt:arrow-recursion-extensions:$arrow_version") //optional
 
-    testCompile 'junit:junit:4.11'
-    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    testCompile("junit:junit:4.11")
+    testCompile("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 }
 
 //task wrapper(type: Wrapper) {
-  //  gradleVersion = "5.1.2"
+  // gradleVersion = "5.1.2"
 //}
