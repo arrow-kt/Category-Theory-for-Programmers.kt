@@ -60,7 +60,3 @@ dependencies {
     testCompile("junit:junit:4.11")
     testCompile("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 }
-
-//task wrapper(type: Wrapper) {
-  // gradleVersion = "5.1.2"
-//}
