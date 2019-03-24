@@ -7,10 +7,11 @@ buildscript {
         maven { url = uri("http://dl.bintray.com/kotlin/kotlin-dev")}
         maven { url = uri("https://dl.bintray.com/jetbrains/markdown/")}
         maven { url = uri("https://dl.bintray.com/arrow-kt/arrow-kt/")}
+        maven { url = uri("https://oss.jfrog.org/artifactory/oss-snapshot-local/") }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "io.arrow-kt:ank-gradle-plugin:0.7.1"
+        classpath "io.arrow-kt:ank-gradle-plugin:0.7.0-SNAPSHOT"
     }
 }
 
