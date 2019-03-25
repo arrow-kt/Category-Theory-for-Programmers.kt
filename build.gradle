@@ -11,7 +11,7 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "io.arrow-kt:arrow-ank-gradle:0.9.0-SNAPSHOT"
+        classpath "io.arrow-kt:arrow-ank-gradle:0.9.1-SNAPSHOT"
     }
 }
 
