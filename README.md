@@ -38,9 +38,9 @@ If it is inside an interface or class, use the method, i.e.
 fun f(a: A) : B
 ```
 
-### Ank
+### Λnk
 
-- The Docs for [Ank](https://github.com/arrow-kt/arrow/tree/master/modules/ank) without playground 
+- The Docs for [Λnk](https://github.com/arrow-kt/arrow/tree/master/modules/ank) without ank:playground 
 
 - If you define / redefine type classes please define them within a playground environment.
 ```markdown
