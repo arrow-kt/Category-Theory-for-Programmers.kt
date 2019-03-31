@@ -38,6 +38,34 @@ If it is inside an interface or class, use the method, i.e.
 fun f(a: A) : B
 ```
 
+### Λnk
+
+- The Docs for [Λnk](https://github.com/arrow-kt/arrow/tree/master/modules/ank) without ank:playground 
+
+- If you define / redefine type classes please define them within a playground environment.
+```markdown
+```kotlin:ank:playground
+import arrow.data.ForListK
+import arrow.data.ListK
+import arrow.Kind
+import arrow.data.fix
+import arrow.typeclasses.Functor
+
+interface ListKFunctor : Functor<ForListK> {
+    override fun <A, B> Kind<ForListK, A>.map(f: (A) -> B): ListK<B> =
+        fix().map(f)
+}
+```... 
+```
+[Playground Docs](https://github.com/arrow-kt/arrow-playground).
+But for now a basic set-up as the snippet above is sufficient. Remember that ank:playground wont make the code snippet global for other snippets.
+
+- In some instances (in the context of coroutine examples) Λnk won't process very long (over ~160 lines) md files. Split them up into < chapter >-Part1.md , < chapter >-Part2.md
+
+- Debug with (optionally add the --stacktrace)
+```gradle
+   gradle runAnk
+```
 ## License 
 
 ![CC image](https://i.creativecommons.org/l/by/4.0/88x31.png)
