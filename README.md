@@ -1,6 +1,5 @@
 ### Kotlin sample code for Bartosz Milewski's [Category Theory for Programmers](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/)
-
-[![Build Status](https://travis-ci.org/arrow-kt/Category-Theory-for-Programmers.kt.svg)](https://travis-ci.org/arrow-kt/Category-Theory-for-Programmers.kt)
+[![Build Status](https://travis-ci.com/arrow-kt/Category-Theory-for-Programmers.kt.svg?branch=master)](https://travis-ci.com/arrow-kt/Category-Theory-for-Programmers.kt)
 
 ## Contributing
 Contributions (PR, review, issues) are welcome!
