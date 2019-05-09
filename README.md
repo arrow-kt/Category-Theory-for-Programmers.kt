@@ -10,7 +10,7 @@ We discuss Arrow and development of FP in general in Kotlin in the
 
 Build the project with:
 
-```
+```bash
 ./gradlew runAnk
 ```
 
@@ -62,8 +62,8 @@ But for now a basic set-up as the snippet above is sufficient. Remember that ank
 - In some instances (in the context of coroutine examples) Λnk won't process very long (over ~160 lines) md files. Split them up into < chapter >-Part1.md , < chapter >-Part2.md
 
 - Debug with (optionally add the --stacktrace)
-```gradle
-   gradle runAnk
+```bash
+   ./gradlew runAnk
 ```
 ## License 
 
