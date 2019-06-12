@@ -17,7 +17,7 @@ build
 .gradle
 local.properties
 .idea
-*.iml\
+*.iml
 
 # Generated files
 bin/
