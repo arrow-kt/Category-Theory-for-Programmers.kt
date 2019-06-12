@@ -17,6 +17,11 @@ build
 .gradle
 local.properties
 .idea
-*.iml
+*.iml\
+
+# Generated files
+bin/
+gen/
+out/
 
 .DS_Store
