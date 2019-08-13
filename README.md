@@ -44,10 +44,10 @@ fun f(a: A) : B
 - If you define / redefine type classes please define them within a playground environment.
 ```markdown
 ```kotlin:ank:playground
-import arrow.data.ForListK
-import arrow.data.ListK
+import arrow.core.ForListK
+import arrow.core.ListK
 import arrow.Kind
-import arrow.data.fix
+import arrow.core.fix
 import arrow.typeclasses.Functor
 
 interface ListKFunctor : Functor<ForListK> {
