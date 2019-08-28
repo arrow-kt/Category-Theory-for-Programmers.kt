@@ -62,7 +62,7 @@ function extractSnippets()
         LANGUAGE=""
         SEPARATORS_NUMBER=0
         SNIPPED_NUMBER=0
-        while read line; do
+        while read -r line; do
             if [[ $line = ..* ]]; then
                 continue
             fi
