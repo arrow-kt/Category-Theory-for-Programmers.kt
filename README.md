@@ -65,6 +65,17 @@ But for now a basic set-up as the snippet above is sufficient. Remember that ank
 ```bash
    ./gradlew runAnk
 ```
+
+## Initial drafts :tada:
+
+Now there are initial drafts for the missing sections!
+
+It's only necessary to add the translation in Kotlin after the existing snippets in Haskell.
+
+Pick the draft from `drafts` directory and move it to `src/main/ank` directory to be considered when building the project.
+
+Please, note that each snippet has **\`\`\`kotlin:ank:silent\`\`\`** by default. Change it to just **\`\`\`kotlin\`\`\`** or **\`\`\`kotlin:ank:playground\`\`\`** for different purposes according to this documentation.
+
 ## License 
 
 ![CC image](https://i.creativecommons.org/l/by/4.0/88x31.png)
