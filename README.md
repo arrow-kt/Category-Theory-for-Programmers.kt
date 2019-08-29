@@ -78,7 +78,7 @@ Even the hypothetical file for Scala is included as a help in `drafts/scala` so 
 
 ![Screenshot of meld](drafts/scala/example.png)
 
-Please, note that each snippet has **\`\`\`kotlin:ank:silent\`\`\`** by default. Change it to just **\`\`\`kotlin\`\`\`** or **\`\`\`kotlin:ank:playground\`\`\`** for different purposes according to this documentation.
+Please, note that each snippet has **\`\`\`kotlin:ank:silent\`\`\`** by default. Replace it by just **\`\`\`kotlin\`\`\`** or **\`\`\`kotlin:ank:playground\`\`\`** for different purposes according to this documentation.
 
 ## License 
 
