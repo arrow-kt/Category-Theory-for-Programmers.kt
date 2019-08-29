@@ -58,6 +58,10 @@ function extractSnippets()
     
         mkdir -p ../src/content/$SECTION/code/$KOTLIN/
         mkdir -p ../src/content/$SECTION/code/$HASKELL/
+        # For the real book:
+        # mkdir -p "../../milewski-ctfp-pdf/src/content/$SECTION/code/$KOTLIN"
+        # rm -f ../../milewski-ctfp-pdf/src/content/$SECTION/code/$HASKELL/snippet*
+        # rm -f ../../milewski-ctfp-pdf/src/content/$SECTION/code/$KOTLIN/snippet*
     
         LANGUAGE=""
         SEPARATORS_NUMBER=0
@@ -81,6 +85,8 @@ function extractSnippets()
                 fi
             fi
             echo "$line" >> ../src/content/$SECTION/code/$LANGUAGE/snippet$(printf "%02d" $SNIPPED_NUMBER).$(extensionFromLanguage $LANGUAGE)
+            # For the real book:
+            # echo "$line" >> "../../milewski-ctfp-pdf/src/content/$SECTION/code/$LANGUAGE/snippet$(printf "%02d" $SNIPPED_NUMBER).$(extensionFromLanguage $LANGUAGE)"
         done < $file
     done
 }

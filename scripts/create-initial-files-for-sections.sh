@@ -24,27 +24,41 @@ function checkDirectories()
     fi
 }
 
-function contentForFile() {
+function contentForKotlinFile() {
     echo '```Haskell'
     cat $1
+    echo -e '\n```'
+    echo '```kotlin:ank:silent'
+    echo ""
     echo '```'
-    echo '```kotlin'
-    echo ''
-    echo '```'
+    echo '................'
+}
+
+function contentForScalaFile() {
+    echo '```Haskell'
+    cat $1
+    echo -e '\n```'
+    echo '```scala'
+    FILENAME=$(basename -s .hs $1)
+    cat $2/code/scala/$FILENAME.scala
+    echo -e '\n```'
     echo '................'
 }
 
 function createInitialFiles()
 {
-    for directory in ../../milewski-ctfp-pdf/src/content/*; do
+    for directoryPath in ../../milewski-ctfp-pdf/src/content/*; do
         echo -n "."
-        if [ ! -d $directory ]; then
+        if [ ! -d $directoryPath ]; then
             continue
         fi
-        DIRECTORY_NAME=$(basename $directory)
-        if [ -d $directory/code/haskell/ ]; then
-            for file in $directory/code/haskell/*; do
-                contentForFile $file >> ../src/main/ank/drafts/${DIRECTORY_NAME}.md
+        SECTION=$(basename $directoryPath)
+        if [ -d $directoryPath/code/haskell/ ]; then
+            rm -f ../drafts/${SECTION}.md
+            rm ../drafts/scala/${SECTION}-hypothetical-file.md
+            for file in $directoryPath/code/haskell/*; do
+                contentForKotlinFile $file >> ../drafts/${SECTION}.md
+                contentForScalaFile $file $directoryPath >> ../drafts/scala/${SECTION}-hypothetical-file.md
             done
         fi
     done
@@ -52,8 +66,6 @@ function createInitialFiles()
 
 showBanner
 cd $(dirname $0)
-mkdir -p ../src/main/ank/drafts/
-rm -f ../src/main/ank/drafts/*.md
 checkDirectories
 createInitialFiles
-echo -e "\n\nFinished!!\nLook at: src/main/ank/drafts/"
+echo -e "\n\nFinished!!\nLook at: drafts/"
