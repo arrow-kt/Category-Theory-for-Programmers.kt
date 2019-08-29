@@ -74,6 +74,10 @@ It's only necessary to add the translation in Kotlin after the existing snippets
 
 Pick the draft from `drafts` directory and move it to `src/main/ank` directory to be considered when building the project.
 
+Even the hypothetical file for Scala is included as a help in `drafts/scala` so it's possible to add the translation in Kotlin with more information:
+
+![Screenshot of meld](drafts/scala/example.png)
+
 Please, note that each snippet has **\`\`\`kotlin:ank:silent\`\`\`** by default. Change it to just **\`\`\`kotlin\`\`\`** or **\`\`\`kotlin:ank:playground\`\`\`** for different purposes according to this documentation.
 
 ## License 
