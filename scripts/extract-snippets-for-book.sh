@@ -14,6 +14,14 @@ function showBanner()
     echo -n "Extracting snippets for Category Theory for Programmers "
 }
 
+function checkDirectories()
+{
+    if [ ! -d ../milewski-ctfp-pdf ]; then
+        echo "Downloading repository for the book..."
+        git clone https://github.com/hmemcpy/milewski-ctfp-pdf.git ../milewski-ctfp-pdf
+    fi
+}
+
 function extensionFromLanguage()
 {
     if [[ $1 = $HASKELL ]]; then
@@ -56,12 +64,8 @@ function extractSnippets()
     
         SECTION=$(sectionNameFromFile $file)
     
-        mkdir -p ../src/content/$SECTION/code/$KOTLIN/
+        mkdir -p ../milewski-ctfp-pdf/src/content/$SECTION/code/$KOTLIN/
         mkdir -p ../src/content/$SECTION/code/$HASKELL/
-        # For the real book:
-        # mkdir -p "../../milewski-ctfp-pdf/src/content/$SECTION/code/$KOTLIN"
-        # rm -f ../../milewski-ctfp-pdf/src/content/$SECTION/code/$HASKELL/snippet*
-        # rm -f ../../milewski-ctfp-pdf/src/content/$SECTION/code/$KOTLIN/snippet*
     
         LANGUAGE=""
         SEPARATORS_NUMBER=0
@@ -84,16 +88,15 @@ function extractSnippets()
                     continue
                 fi
             fi
-            echo "$line" >> ../src/content/$SECTION/code/$LANGUAGE/snippet$(printf "%02d" $SNIPPED_NUMBER).$(extensionFromLanguage $LANGUAGE)
-            # For the real book:
-            # echo "$line" >> "../../milewski-ctfp-pdf/src/content/$SECTION/code/$LANGUAGE/snippet$(printf "%02d" $SNIPPED_NUMBER).$(extensionFromLanguage $LANGUAGE)"
+            echo "$line" >> "../$(if [[ $LANGUAGE == $KOTLIN ]]; then echo 'milewski-ctfp-pdf/'; fi)src/content/$SECTION/code/$LANGUAGE/snippet$(printf "%02d" $SNIPPED_NUMBER).$(extensionFromLanguage $LANGUAGE)"
         done < $file
     done
 }
 
 showBanner
 cd $(dirname $0)
-rm -rf ../src/content/*
+checkDirectories
+rm -rf ../src/content/* ../milewski-ctfp-pdf/src/content/**/code/$KOTLIN
 fixFilesWhenJoiningParts
 extractSnippets
-echo -e "\n\nFinished!!\nLook at: src/content/"
+echo -e "\n\nFinished!!\nLook at: milewski-ctfp-pdf/src/content/**/code/$KOTLIN"

@@ -13,14 +13,9 @@ function showBanner()
 
 function checkDirectories()
 {
-    if [ ! -d ../../milewski-ctfp-pdf ]; then
-        echo -e "\nPlease, download the milewski-ctfp-pdf repository"
-        echo "in the parent directory of this workspace:"
-        echo -e "\n> ls"
-        echo "Category-Theory-for-Programmers.kt"
-        echo "milewski-ctfp-pdf"
-        echo -e "\nTo download it: git clone git@github.com:hmemcpy/milewski-ctfp-pdf.git"
-        exit 1
+    if [ ! -d ../milewski-ctfp-pdf ]; then
+        echo "Downloading repository for the book..."
+        git clone https://github.com/hmemcpy/milewski-ctfp-pdf.git ../milewski-ctfp-pdf
     fi
 }
 
@@ -47,7 +42,7 @@ function contentForScalaFile() {
 
 function createInitialFiles()
 {
-    for directoryPath in ../../milewski-ctfp-pdf/src/content/*; do
+    for directoryPath in ../milewski-ctfp-pdf/src/content/*; do
         echo -n "."
         if [ ! -d $directoryPath ]; then
             continue

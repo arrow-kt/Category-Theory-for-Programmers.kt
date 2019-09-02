@@ -5,32 +5,41 @@ echo "    ,,,,,            .|||.          -  _ ,  -   "
 echo "   /(o o)\           (o o)         -  (o)o)  -  "
 echo "ooO--(_)--Ooo----ooO--(_)--Ooo-----ooO'(_)--Ooo-"
 echo ""
-echo "Comparing Haskell snippets for Category Theory for Programmers"
+echo -e "Comparing Haskell snippets for Category Theory for Programmers\n"
 
 cd $(dirname $0)
 
-if [ ! -d ../../milewski-ctfp-pdf ]; then
-    echo -e "\nPlease, download milewski-ctfp-pdf repository to compare."
-    echo "Place it in the parent directory of this workspace:"
-    echo -e "\n> ls"
-    echo "Category-Theory-for-Programmers.kt"
-    echo "milewski-ctfp-pdf"
-    echo -e "\nTo download it: git clone git@github.com:hmemcpy/milewski-ctfp-pdf.git"
-    exit 1
+if [ ! -d ../milewski-ctfp-pdf ]; then
+    echo "Downloading repository for the book..."
+    git clone https://github.com/hmemcpy/milewski-ctfp-pdf.git ../milewski-ctfp-pdf 
 fi
 
-for directory in ../../milewski-ctfp-pdf/src/content/*; do
+rm -rf /tmp/kotlin-edition*
+for directory in ../milewski-ctfp-pdf/src/content/*; do
     if [ ! -d $directory ]; then
         continue
     fi
     DIRECTORY_NAME=$(basename $directory)
     if [ -d $directory/code/haskell/ ]; then
-        echo -e "\n***********************************************************************"
-        echo -e "Comparing section $DIRECTORY_NAME\n"
         if [ -d ../src/content/$DIRECTORY_NAME/code/haskell/ ]; then
-            diff -rEZbwB $directory/code/haskell/ ../src/content/$DIRECTORY_NAME/code/haskell/
+            echo -e "\n***********************************************************************" > /tmp/kotlin-edition-single-diff.log
+            echo " Section: $DIRECTORY_NAME" >> /tmp/kotlin-edition-single-diff.log
+            echo -e "***********************************************************************\n" >> /tmp/kotlin-edition-single-diff.log
+            diff -rEZbwB $directory/code/haskell/ ../src/content/$DIRECTORY_NAME/code/haskell/ >> /tmp/kotlin-edition-single-diff.log \
+                && echo -e "\t$DIRECTORY_NAME" >> /tmp/kotlin-edition-ok.log \
+                || ( echo -e "\t$DIRECTORY_NAME" >> /tmp/kotlin-edition-error.log; \
+                     cat /tmp/kotlin-edition-single-diff.log >> /tmp/kotlin-edition-diff.log )
         else
-            echo ">>> Missing section!"
+            echo -e "\t$DIRECTORY_NAME" >> /tmp/kotlin-edition-missing.log
         fi
     fi
 done
+
+echo "OK:"
+cat /tmp/kotlin-edition-ok.log
+echo -e "\nMISSING:"
+cat /tmp/kotlin-edition-missing.log
+echo -e "\nERRORS:"
+cat /tmp/kotlin-edition-error.log
+echo -e "\nDIFFERENCES:"
+cat /tmp/kotlin-edition-diff.log

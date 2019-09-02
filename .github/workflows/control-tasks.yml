@@ -1,0 +1,43 @@
+name: ControlTasks
+
+on: [push]
+
+jobs:
+  snippets-inspection:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Extract Haskell and Kotlin snippets
+      run: /bin/bash scripts/extract-snippets-for-book.sh
+    - name: Compare Haskell snippets
+      run: /bin/bash scripts/compare-haskell-snippets.sh
+
+  kotlin-edition:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Download repository for Kotlin Edition book
+      run: git clone --single-branch --branch kotlin-edition https://github.com/rachelcarmena/milewski-ctfp-pdf.git
+    - name: Extract Haskell and Kotlin snippets
+      run: /bin/bash scripts/extract-snippets-for-book.sh
+    - name: Build Kotling Edition
+      run: |
+        cd milewski-ctfp-pdf
+        export NIX_CURL_FLAGS=-sS
+        wget --retry-connrefused --waitretry=1 -O /tmp/nix-install https://nixos.org/releases/nix/nix-2.0.4/install
+        sh /tmp/nix-install
+        . ~/.nix-profile/etc/profile.d/nix.sh
+        nix-env --version
+        nix-instantiate --eval -E 'with import <nixpkgs> {}; lib.version or lib.nixpkgsVersion'
+        nix-shell --pure --command 'cd src; make kotlin' || echo "Skipping the failures for now..."
+    - name: Show PDF files
+      run: |
+        echo "INFO:"
+        echo -e "\tOK = PDF file in 'milewski-ctfp-pdf/out' directory"
+        echo -e "\tFAILURE = PDF file in 'milewski-ctfp-pdf/src' directory"
+        echo "PDF files:"
+        find ./milewski-ctfp-pdf -name "*.pdf"
