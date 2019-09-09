@@ -13,6 +13,8 @@ jobs:
       run: /bin/bash scripts/extract-snippets-for-book.sh
     - name: Compare Haskell snippets
       run: /bin/bash scripts/compare-haskell-snippets.sh
+    - name: Check Kotlin snippets style
+      run: /bin/bash scripts/check-kotlin-snippets-style.sh
 
   kotlin-edition:
 
@@ -24,7 +26,7 @@ jobs:
       run: git clone --single-branch --branch kotlin-edition https://github.com/rachelcarmena/milewski-ctfp-pdf.git
     - name: Extract Haskell and Kotlin snippets
       run: /bin/bash scripts/extract-snippets-for-book.sh
-    - name: Build Kotling Edition
+    - name: Build Kotlin Edition
       run: |
         cd milewski-ctfp-pdf
         export NIX_CURL_FLAGS=-sS
