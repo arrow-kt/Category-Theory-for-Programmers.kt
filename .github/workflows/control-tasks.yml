@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Download repository for Kotlin Edition book
-      run: git clone --single-branch --branch kotlin-edition https://github.com/rachelcarmena/milewski-ctfp-pdf.git
+      run: git clone --single-branch --branch wip/kotlin-edition https://github.com/arrow-kt/milewski-ctfp-pdf.git
     - name: Extract Haskell and Kotlin snippets
       run: /bin/bash scripts/extract-snippets-for-book.sh
     - name: Build Kotlin Edition
@@ -43,3 +43,9 @@ jobs:
         echo -e "\tFAILURE = PDF file in 'milewski-ctfp-pdf/src' directory"
         echo "PDF files:"
         find ./milewski-ctfp-pdf -name "*.pdf"
+        mkdir pdf-files
+        mv `find ./milewski-ctfp-pdf -name "*.pdf"` pdf-files
+    - uses: actions/upload-artifact@master
+      with:
+        name: partial-book
+        path: pdf-files
