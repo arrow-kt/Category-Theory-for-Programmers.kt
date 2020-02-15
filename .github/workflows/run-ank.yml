@@ -3,7 +3,7 @@ name: RunAnk
 on: pull_request
 
 jobs:
-  type checking:
+  type_checking:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
