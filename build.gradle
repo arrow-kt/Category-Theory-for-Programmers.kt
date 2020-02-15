@@ -38,7 +38,6 @@ repositories {
 
 dependencies {
   compile("org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version")
-  compile("io.arrow-kt:arrow-ank:$arrow_version")
   compile "io.arrow-kt:arrow-fx:$arrow_version"
   compile "io.arrow-kt:arrow-optics:$arrow_version"
   compile "io.arrow-kt:arrow-syntax:$arrow_version"
