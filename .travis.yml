@@ -1,9 +1,0 @@
-language: kotlin
-sudo: required
-dist: trusty
-
-jdk:
-  - oraclejdk8
-
-script:
-  - ./gradlew runAnk
