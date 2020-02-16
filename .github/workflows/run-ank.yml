@@ -12,8 +12,6 @@ jobs:
         with:
           java-version: 1.8
           architecture: x64
-      - name: Validate gradle wrapper
-        uses: gradle/wrapper-validation-action@v1
       - name: Clean build
         env:
           JAVA_OPTS: -Xms512m -Xmx1024m
@@ -22,9 +20,6 @@ jobs:
           ./gradlew -v
           ./gradlew clean build
       - name: Run Ank
-        if: success()
         env:
           JAVA_OPTS: -Xms512m -Xmx1024m
-        run: |
-          set -ex
-          ./gradlew runAnk
+        run: ./gradlew runAnk
